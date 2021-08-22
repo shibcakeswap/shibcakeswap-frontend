@@ -108,7 +108,6 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
             <Over fontSize="40px" color="#ffffff" bold mr="8px">
               {over}
             </Over>
-            </>
             <Text fontSize="40px" color="#ffffff" bold>
               {inPrizes}
             </Text>
