@@ -96,7 +96,7 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const prizeTotalText = prizeInBusd.isNaN() ? prizeTotal.toString() : '-'
-  const prizeText = t('15% PancakeSwap CAKE Rewards!', { amount: prizeTotalText })
+  const prizeText = t('15% PancakeSwap CAKE Rewards!')
   const [over, inPrizes] = prizeText.split(prizeTotalText)
 
   return (
@@ -108,14 +108,6 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
             <Over fontSize="40px" color="#ffffff" bold mr="8px">
               {over}
             </Over>
-            <>
-              {prizeInBusd.isNaN() ? (
-                <>
-                  <Skeleton height={40} width={120} mb="10px" mt="10px" mr="8px" />
-                </>
-              ) : (
-                <Balance fontSize="40px" color="#ffffff" bold prefix="$" mr="8px" decimals={0} value={prizeTotal} />
-              )}
             </>
             <Text fontSize="40px" color="#ffffff" bold>
               {inPrizes}
