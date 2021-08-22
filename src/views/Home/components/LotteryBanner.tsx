@@ -96,14 +96,14 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const prizeTotalText = prizeInBusd.isNaN() ? prizeTotal.toString() : '-'
-  const prizeText = t('Over %amount% in Prizes!', { amount: prizeTotalText })
+  const prizeText = t('15% PancakeSwap CAKE Rewards!', { amount: prizeTotalText })
   const [over, inPrizes] = prizeText.split(prizeTotalText)
 
   return (
     <Wrapper>
       <Inner>
         <LeftWrapper>
-          <NowLive>{t('Lottery Now Live')}</NowLive>
+          <NowLive>{t('Shibcake - Reflection Token')}</NowLive>
           <PrizeFlex>
             <Over fontSize="40px" color="#ffffff" bold mr="8px">
               {over}
@@ -121,17 +121,17 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
               {inPrizes}
             </Text>
           </PrizeFlex>
-          <NavLink exact activeClassName="active" to="/lottery" id="lottery-pot-banner">
+          <NavLink exact activeClassName="active" href="https://shibcake.com" id="lottery-pot-banner">
             <Button>
               <Text color="white" bold fontSize="16px" mr="4px">
-                {t('Play Now')}
+                {t('Go to the website')}
               </Text>
               <ArrowForwardIcon color="white" />
             </Button>
           </NavLink>
         </LeftWrapper>
         <RightWrapper>
-          <img src="/images/lottery/tombola.png" alt="lottery bunny" />
+          <img src="/images/homepage/shibcake.png" alt="lottery bunny" />
         </RightWrapper>
       </Inner>
     </Wrapper>
