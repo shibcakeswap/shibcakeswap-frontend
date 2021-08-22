@@ -44,6 +44,15 @@ export interface Ifo {
   [PoolIds.poolUnlimited]: IfoPoolInfo
 }
 
+export enum QuoteToken {
+  'BNB' = 'BNB',
+  'CAKE' = 'CAKE',
+  'SYRUP' = 'SYRUP',
+  'BUSD' = 'BUSD',
+  'TWT' = 'TWT',
+  'UST' = 'UST',
+}
+
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
   'CORE' = 'Core',
