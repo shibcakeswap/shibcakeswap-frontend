@@ -125,6 +125,11 @@ export const useTotalValue = (): BigNumber => {
   return value;
 }
 
+// Block
+export const useBlock = (): Block => {
+  return useSelector((state: State) => state.block)
+}
+
 // /!\
 // Don't add anything here. These hooks will be moved the the predictions folder
 
