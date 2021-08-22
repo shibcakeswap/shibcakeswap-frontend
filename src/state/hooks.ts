@@ -24,16 +24,6 @@ export const useFetchPublicData = () => {
     dispatch(fetchFarmsPublicDataAsync())
     dispatch(fetchPoolsPublicDataAsync())
   }, [dispatch, slowRefresh])
-
-  useEffect(() => {
-    const web3 = getWeb3NoAccount()
-    const interval = setInterval(async () => {
-      const blockNumber = await web3.eth.getBlockNumber()
-      dispatch(setBlock(blockNumber))
-    }, 6000)
-
-    return () => clearInterval(interval)
-  }, [dispatch])
 }
 
 // Farms
