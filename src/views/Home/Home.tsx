@@ -8,7 +8,6 @@ import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 import EarnAPRCard from 'views/Home/components/EarnAPRCard'
 import EarnAssetCard from 'views/Home/components/EarnAssetCard'
-import PredictionPromotionCard from 'views/Home/components/PredictionPromotionCard'
 import LotteryPromotionCard from 'views/Home/components/LotteryPromotionCard'
 import LotteryBanner from 'views/Home/components/LotteryBanner'
 import useFetchLotteryForPromos from 'views/Home/hooks/useFetchLotteryForPromos'
@@ -80,11 +79,10 @@ const Home: React.FC = () => {
         <div>
           <Cards>
             <FarmStakingCard />
-            <PredictionPromotionCard />
+            <CakeStats />
           </Cards>
           
           <Cards>
-            <CakeStats />
             <TotalValueLockedCard />
           </Cards>
         </div>
