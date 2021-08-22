@@ -125,6 +125,35 @@ export const useTotalValue = (): BigNumber => {
   return value;
 }
 
+// Prices
+export const useFetchPriceList = () => {
+  const { slowRefresh } = useRefresh()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPrices())
+  }, [dispatch, slowRefresh])
+}
+
+export const useGetApiPrices = () => {
+  const prices: PriceState['data'] = useSelector((state: State) => state.prices.data)
+  return prices
+}
+
+export const useGetApiPrice = (token: string) => {
+  const prices = useGetApiPrices()
+  let tokenSymbol = token.toLowerCase()
+
+  if (!prices) {
+    return null
+  }
+
+  if (tokenSymbol === 'bnb') tokenSymbol = 'wbnb'
+  if (tokenSymbol === 'btc') tokenSymbol = 'btcb'
+
+  return prices[tokenSymbol]
+}
+
 // Block
 export const useBlock = (): Block => {
   return useSelector((state: State) => state.block)
