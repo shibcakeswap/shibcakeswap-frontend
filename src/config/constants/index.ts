@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@shibcakeswap/sdk'
 import { BUSD, DAI, USDT, BTCB, CAKE, WBNB, UST, ETH, USDC } from './tokens'
 
-export const ROUTER_ADDRESS = '0x10ED43C718714eb63d5aA57B78B54704E256024E'
+export const ROUTER_ADDRESS = '0x238fF9B0B8256830Ac229801C1791C3e2801dEda'
 
 // a list of tokens by chain
 type ChainTokenList = {
