@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Card, CardBody, Heading, Skeleton, Text } from '@shibcakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useGetStats } from 'hooks/api'
+import { useTotalValue } from '../../../state/hooks'
+import CardValue from './CardValue'
 
 const StyledTotalValueLockedCard = styled(Card)`
   align-items: center;
@@ -12,8 +14,9 @@ const StyledTotalValueLockedCard = styled(Card)`
 
 const TotalValueLockedCard = () => {
   const { t } = useTranslation()
-  const data = useGetStats()
-  const tvl = data ? data.tvl.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
+  // const data = useGetStats()
+  const totalValue = useTotalValue();
+  // const tvl = data ? data.tvl.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
 
   return (
     <StyledTotalValueLockedCard>
@@ -23,7 +26,8 @@ const TotalValueLockedCard = () => {
         </Heading>
         {data ? (
           <>
-            <Heading scale="xl">{`$${tvl}`}</Heading>
+            {/* <Heading size="xl">{`$${tvl}`}</Heading> */}
+            <CardValue value={totalValue.toNumber()} prefix="$" decimals={2}/>
             <Text color="textSubtle">{t('Across all LPs and Syrup Pools')}</Text>
           </>
         ) : (
