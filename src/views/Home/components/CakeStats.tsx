@@ -23,12 +23,12 @@ const Row = styled.div`
 
 const CakeStats = () => {
   const { t } = useTranslation()
-  const marketCap = cakePrice.times(circSupply);
-  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
   const totalSupply = useTotalSupply()
   const burnedBalance = getBalanceNumber(useBurnedBalance(getCakeAddress()))
-  const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
   const cakePrice = usePriceCakeBusd();
+  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
+  const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
+  const marketCap = cakePrice.times(circSupply);
 
   return (
     <StyledCakeStats>
