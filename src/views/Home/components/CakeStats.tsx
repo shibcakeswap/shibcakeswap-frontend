@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBody, Heading, Text } from '@shibcakeswap/uikit'
+import BigNumber from 'bignumber.js/bignumber'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
