@@ -38,7 +38,7 @@ const CakeStats = () => {
           {t('Cake Stats')}
         </Heading>
         <Row>
-          <Text fontSize="14px">{TranslateString(10005, 'Market Cap')}</Text>
+          <Text fontSize="14px">{t('Market Cap')}</Text>
           <CardValue fontSize="14px" value={getBalanceNumber(marketCap)} decimals={0} prefix="$" />
         </Row>
         <Row>
