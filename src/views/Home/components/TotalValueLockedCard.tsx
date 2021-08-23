@@ -1,9 +1,9 @@
-import React from 'react'
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, Heading, Text } from '@shibcakeswap/uikit'
+import { Card, CardBody, Heading, Skeleton, Text } from '@shibcakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { useTotalValue } from '../../../state/hooks'
-import CardValue from './CardValue'
+import { useGetStats } from 'hooks/api'
 
 const StyledTotalValueLockedCard = styled(Card)`
   align-items: center;
@@ -11,9 +11,17 @@ const StyledTotalValueLockedCard = styled(Card)`
   flex: 1;
 `
 
+export interface ApiTvlResponse {
+  update_at: string
+  '24h_total_volume': number
+  total_value_locked: number
+  total_value_locked_all: number
+}
+
 const TotalValueLockedCard = () => {
   const { t } = useTranslation()
- const totalValue = useTotalValue()
+  const data = useGetStats()
+  const tvl = data ? data?.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
 
   return (
     <StyledTotalValueLockedCard>
@@ -21,13 +29,19 @@ const TotalValueLockedCard = () => {
         <Heading scale="lg" mb="24px">
           {t('Total Value Locked (TVL)')}
         </Heading>
+        {data ? (
           <>
-          <CardValue value={totalValue.toNumber()} prefix="$" decimals={2} />
-          <Text color="textSubtle">{t('Across all Farms and Pools')}</Text>
-        </>
+            <Heading scale="xl">{`$${tvl}`}</Heading>
+            <Text color="textSubtle">{t('Across all LPs and Syrup Pools')}</Text>
+          </>
+        ) : (
+          <>
+            <Skeleton height={66} />
+          </>
+        )}
       </CardBody>
     </StyledTotalValueLockedCard>
   )
 }
 
-export default TotalValueLockedCard
+export default 
