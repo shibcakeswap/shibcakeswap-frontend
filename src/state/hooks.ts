@@ -21,8 +21,8 @@ export const useFetchPublicData = () => {
   const dispatch = useDispatch()
   const { slowRefresh } = useRefresh()
   useEffect(() => {
-    dispatch(fetchFarmsPublicDataAsync())
-    dispatch(fetchPoolsPublicDataAsync())
+    dispatch(fetchFarmsPublicDataAsync.fulfilled())
+    dispatch(fetchPoolsPublicDataAsync.fulfilled())
   }, [dispatch, slowRefresh])
 
   useEffect(() => {
