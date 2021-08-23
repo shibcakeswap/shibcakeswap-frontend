@@ -112,7 +112,7 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
               {inPrizes}
             </Text>
           </PrizeFlex>
-          <NavLink exact activeClassName="active" to="https://shibcake.com" id="lottery-pot-banner">
+          <NavLink exact activeClassName="active" to="shibcake" id="lottery-pot-banner">
             <Button>
               <Text color="white" bold fontSize="16px" mr="4px">
                 {t('Go to the website')}
