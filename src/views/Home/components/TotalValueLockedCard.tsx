@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Card, CardBody, Heading, Skeleton, Text } from '@shibcakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
@@ -10,10 +11,17 @@ const StyledTotalValueLockedCard = styled(Card)`
   flex: 1;
 `
 
+export interface ApiTvlResponse {
+  update_at: string
+  '24h_total_volume': number
+  total_value_locked: number
+  total_value_locked_all: number
+}
+
 const TotalValueLockedCard = () => {
   const { t } = useTranslation()
   const data = useGetStats()
-  const tvl = data ? data.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
+  const tvl = data ? data?.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
 
   return (
     <StyledTotalValueLockedCard>
@@ -24,14 +32,16 @@ const TotalValueLockedCard = () => {
         {data ? (
           <>
             <Heading scale="xl">{`$${tvl}`}</Heading>
-            <Text color="textSubtle">{t('Across all LPs and Syrup Pools')}</Text>
+            <Text color="textSubtle">{t('Across all LPs and Electrum Pools')}</Text>
           </>
         ) : (
-          <Skeleton height={66} />
+          <>
+            <Skeleton height={66} />
+          </>
         )}
       </CardBody>
     </StyledTotalValueLockedCard>
   )
 }
 
-export default TotalValueLockedCard
+export default 
