@@ -72,6 +72,9 @@ const App: React.FC = () => {
             <Route path="/farms">
               <Farms />
             </Route>
+            <Route path="/pools">
+              <Pools />
+            </Route>
             
 
             {/* Using this format because these components use routes injected props. We need to rework them with hooks */}
