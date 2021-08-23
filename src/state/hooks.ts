@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
 import { getWeb3NoAccount } from 'utils/web3'
 import { ethers } from 'ethers'
