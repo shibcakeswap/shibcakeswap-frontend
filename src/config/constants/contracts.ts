@@ -48,7 +48,7 @@ export default {
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
   cakeVault: {
-    56: '0xaa49736630A200ed5194314FeF154F0b178c6B6b',
+    56: '0xCCa72D8d39Dac5534f0076023e5963E7B87dd29b',
     97: '',
   },
   predictions: {
