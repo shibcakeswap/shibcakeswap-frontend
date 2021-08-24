@@ -26,8 +26,7 @@ const StyledRow = styled.div`
 `
 
 const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
-  const { isXs, isSm, isMd, isLg, isXl, isXxl, isTablet, isDesktop } = useMatchBreakpoints()
-  const isLargerScreen = isLg || isXl || isXxl
+  const { isXs, isSm, isMd, isLg, isXl } = useMatchBreakpoints()
   const [expanded, setExpanded] = useState(false)
   const shouldRenderActionPanel = useDelayedUnmount(expanded, 300)
 
@@ -45,9 +44,9 @@ const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
           <EarningsCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
         )}
         {pool.isAutoVault ? <AutoAprCell pool={pool} /> : <AprCell pool={pool} />}
-        {isLargerScreen && <TotalStakedCell pool={pool} />}
-        {isDesktop && <EndsInCell pool={pool} />}
-        <ExpandActionCell expanded={expanded} isFullLayout={isTablet || isDesktop} />
+        {(isLg || isXl) && <TotalStakedCell pool={pool} />}
+        {isXl && <EndsInCell pool={pool} />}
+        <ExpandActionCell expanded={expanded} isFullLayout={isMd || isLg || isXl} />
       </StyledRow>
       {shouldRenderActionPanel && (
         <ActionPanel
@@ -55,7 +54,7 @@ const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
           pool={pool}
           userDataLoaded={userDataLoaded}
           expanded={expanded}
-          breakpoints={{ isXs, isSm, isMd, isLg, isXl, isXxl }}
+          breakpoints={{ isXs, isSm, isMd, isLg, isXl }}
         />
       )}
     </>
