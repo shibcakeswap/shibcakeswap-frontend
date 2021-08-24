@@ -10,7 +10,6 @@ import Apr from '../Apr'
 
 interface AprCellProps {
   pool: Pool
-  performanceFee: number
 }
 
 const StyledCell = styled(BaseCell)`
@@ -23,9 +22,9 @@ const StyledCell = styled(BaseCell)`
 const AprCell: React.FC<AprCellProps> = ({ pool }) => {
   const { t } = useTranslation()
   const { isXs, isSm } = useMatchBreakpoints()
- const { userData } = pool
+  const { userData } = pool
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
-  
+
   return (
     <StyledCell role="cell">
       <CellContent>
