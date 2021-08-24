@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Text, useModal, Flex, Skeleton, Heading } from  '@shibcakeswap/uikit'
+import { Button, Text, useModal, Flex, Skeleton, Heading } from '@shibcakeswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { PoolCategory } from 'config/constants/types'
@@ -28,7 +28,6 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const { account } = useWeb3React()
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
-  // These will be reassigned later if its Auto CAKE vault
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   const hasEarnings = earnings.gt(0)
@@ -36,8 +35,6 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const isCompoundPool = sousId === 0
   const isBnbPool = poolCategory === PoolCategory.BINANCE
-
-
 
   const [onPresentCollect] = useModal(
     <CollectModal
