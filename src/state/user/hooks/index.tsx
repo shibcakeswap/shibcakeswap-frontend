@@ -9,17 +9,19 @@ import { AppDispatch, AppState } from '../../index'
 import {
   addSerializedPair,
   addSerializedToken,
+  FarmStakedOnly,
+  muteAudio,
   removeSerializedToken,
   SerializedPair,
+  toggleTheme as toggleThemeAction,
+  unmuteAudio,
   updateUserDeadline,
   updateUserExpertMode,
-  updateUserSlippageTolerance,
+  updateUserFarmStakedOnly,
   updateUserSingleHopOnly,
-  muteAudio,
-  unmuteAudio,
-  toggleTheme as toggleThemeAction,
+  updateUserSlippageTolerance,
 } from '../actions'
-import { serializeToken, deserializeToken } from './helpers'
+import { deserializeToken, serializeToken } from './helpers'
 
 export function useAudioModeManager(): [boolean, () => void] {
   const dispatch = useDispatch<AppDispatch>()
@@ -95,6 +97,26 @@ export function useUserSlippageTolerance(): [number, (slippage: number) => void]
   return [userSlippageTolerance, setUserSlippageTolerance]
 }
 
+export function useUserFarmStakedOnly(isActive: boolean): [boolean, (stakedOnly: boolean) => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const userFarmStakedOnly = useSelector<AppState, AppState['user']['userFarmStakedOnly']>((state) => {
+    return state.user.userFarmStakedOnly
+  })
+
+  const setUserFarmStakedOnly = useCallback(
+    (stakedOnly: boolean) => {
+      const farmStakedOnly = stakedOnly ? FarmStakedOnly.TRUE : FarmStakedOnly.FALSE
+      dispatch(updateUserFarmStakedOnly({ userFarmStakedOnly: farmStakedOnly }))
+    },
+    [dispatch],
+  )
+
+  return [
+    userFarmStakedOnly === FarmStakedOnly.ON_FINISHED ? !isActive : userFarmStakedOnly === FarmStakedOnly.TRUE,
+    setUserFarmStakedOnly,
+  ]
+}
+
 export function useUserTransactionTTL(): [number, (slippage: number) => void] {
   const dispatch = useDispatch<AppDispatch>()
   const userDeadline = useSelector<AppState, AppState['user']['userDeadline']>((state) => {
@@ -155,7 +177,7 @@ export function usePairAdder(): (pair: Pair) => void {
  * @param tokenB the other token
  */
 export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
-  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Cake-LP', 'Shibcake LPs')
+  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Cake-LP', 'Pancake LPs')
 }
 
 /**
