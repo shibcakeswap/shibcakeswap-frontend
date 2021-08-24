@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import BigNumber from 'bignumber.js'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { Text, useMatchBreakpoints } from '@shibcakeswap/uikit'
 import BigNumber from 'bignumber.js'
