@@ -1,49 +1,35 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Flex, useModal, CalculateIcon, Skeleton, FlexProps, Button } from '@shibcakeswap/uikit'
-import RoiCalculatorModal from 'components/RoiCalculatorModal'
+import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import Balance from 'components/Balance'
 import { Pool } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
 import { getAprData } from 'views/Pools/helpers'
 import { getAddress } from 'utils/addressHelpers'
-import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from 'utils/bigNumber'
-
-const AprLabelContainer = styled(Flex)`
-  &:hover {
-    opacity: 0.5;
-  }
-`
 
 interface AprProps extends FlexProps {
   pool: Pool
-  stakedBalance: BigNumber
   showIcon: boolean
   performanceFee?: number
 }
 
-const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee = 0, ...props }) => {
-  const { stakingToken, earningToken, isFinished, earningTokenPrice, stakingTokenPrice, userData, apr } = pool
+const Apr: React.FC<AprProps> = ({ pool, showIcon, performanceFee = 0, ...props }) => {
+  const { stakingToken, earningToken, isFinished, earningTokenPrice, apr } = pool
   const { t } = useTranslation()
 
-  const { apr: earningsPercentageToDisplay, autoCompoundFrequency } = getAprData(pool, performanceFee)
-
-  const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
+  const { apr: earningsPercentageToDisplay, roundingDecimals, compoundFrequency } = getAprData(pool, performanceFee)
 
   const apyModalLink = stakingToken.address ? `/swap?outputCurrency=${getAddress(stakingToken.address)}` : '/swap'
 
   const [onPresentApyModal] = useModal(
-    <RoiCalculatorModal
-      earningTokenPrice={earningTokenPrice}
-      stakingTokenPrice={stakingTokenPrice}
-      stakingTokenBalance={stakedBalance.plus(stakingTokenBalance)}
+    <ApyCalculatorModal
+      tokenPrice={earningTokenPrice}
       apr={apr}
-      stakingTokenSymbol={stakingToken.symbol}
       linkLabel={t('Get %symbol%', { symbol: stakingToken.symbol })}
       linkHref={apyModalLink}
       earningTokenSymbol={earningToken.symbol}
-      autoCompoundFrequency={autoCompoundFrequency}
+      roundingDecimals={roundingDecimals}
+      compoundFrequency={compoundFrequency}
       performanceFee={performanceFee}
     />,
   )
@@ -54,7 +40,7 @@ const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee
   }
 
   return (
-    <AprLabelContainer alignItems="center" justifyContent="space-between" {...props}>
+    <Flex alignItems="center" justifyContent="space-between" {...props}>
       {earningsPercentageToDisplay || isFinished ? (
         <>
           <Balance
@@ -74,7 +60,7 @@ const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee
       ) : (
         <Skeleton width="80px" height="16px" />
       )}
-    </AprLabelContainer>
+    </Flex>
   )
 }
 
