@@ -24,6 +24,7 @@ const StyledCell = styled(BaseCell)`
   }
 `
 
+
 const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoaded }) => {
   const { t } = useTranslation()
   const { isXs, isSm } = useMatchBreakpoints()
@@ -31,6 +32,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const isManualCakePool = sousId === 0
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
+  // These will be reassigned later if its Auto CAKE vault
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   const hasEarnings = account && earnings.gt(0)
@@ -67,6 +69,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
           <Skeleton width="80px" height="16px" />
         ) : (
           <>
+
             <Flex>
               <Box mr="8px" height="32px" onClick={hasEarnings ? handleEarningsClick : undefined}>
                 <Balance
