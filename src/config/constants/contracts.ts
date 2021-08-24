@@ -8,63 +8,63 @@ export default {
     56: '0x8d7956b9D573f9a29684eF357f26F9683A59445B',
   },
   lotteryV2: {
-    97: '0x5790c3534F30437641541a0FA04C992799602998',
-    56: '0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c',
+    97: '',
+    56: '',
   },
   multiCall: {
     56: '0xdDf4C84be35E6cd0a14a19443e840ddB90F1ffb3',
     97: '0xdDf4C84be35E6cd0a14a19443e840ddB90F1ffb3',
   },
   pancakeProfile: {
-    56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
-    97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+    56: '',
+    97: '',
   },
   pancakeRabbits: {
-    56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
-    97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
+    56: '',
+    97: '',
   },
   bunnyFactory: {
-    56: '0xfa249Caa1D16f75fa159F7DFBAc0cC5EaB48CeFf',
-    97: '0x707CBF373175fdB601D34eeBF2Cf665d08f01148',
+    56: '',
+    97: '',
   },
   claimRefund: {
-    56: '0xE7e53A7e9E3Cf6b840f167eF69519175c497e149',
+    56: '',
     97: '',
   },
   pointCenterIfo: {
-    56: '0x3C6919b132462C1FEc572c6300E83191f4F0012a',
-    97: '0xd2Ac1B1728Bb1C11ae02AB6e75B76Ae41A2997e3',
+    56: '',
+    97: '',
   },
   bunnySpecial: {
-    56: '0xFee8A195570a18461146F401d6033f5ab3380849',
-    97: '0x7b7b1583De1DeB32Ce6605F6deEbF24A0671c17C',
+    56: '',
+    97: '',
   },
   tradingCompetition: {
-    56: '0xd718baa0B1F4f70dcC8458154042120FFE0DEFFA',
-    97: '0xC787F45B833721ED3aC46E99b703B3E1E01abb97',
+    56: '',
+    97: '',
   },
   easterNft: {
-    56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
-    97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
+    56: '',
+    97: '',
   },
   cakeVault: {
-    56: '0xDC036bb24e2523A1B8f95123bFe3Cb3953ab37Bc',
-    97: '0xDC036bb24e2523A1B8f95123bFe3Cb3953ab37Bc',
+    56: '0x73f82979eFc1f5BE03e443c0591bEDAfcfB4f045',
+    97: '0x73f82979eFc1f5BE03e443c0591bEDAfcfB4f045',
   },
   predictions: {
-    56: '0x516ffd7D1e0Ca40b1879935B2De87cb20Fc1124b',
-    97: '0x4f3140C74789F1D809420343ea83BcE52B7bbAA5',
+    56: '',
+    97: '',
   },
   chainlinkOracle: {
-    56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
+    56: '',
     97: '',
   },
   bunnySpecialCakeVault: {
-    56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
+    56: '',
     97: '',
   },
   bunnySpecialPrediction: {
-    56: '0x342c99e9aC24157657095eC69CB04b73257e7A9C',
+    56: '',
     97: '',
   },
 }
