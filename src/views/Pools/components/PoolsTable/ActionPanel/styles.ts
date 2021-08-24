@@ -1,27 +1,22 @@
 import styled from 'styled-components'
 
-export const ActionContainer = styled.div`
+export const ActionContainer = styled.div<{ isAutoVault?: boolean }>`
   padding: 16px;
   border: 2px solid ${({ theme }) => theme.colors.input};
   border-radius: 16px;
   flex-grow: 1;
   flex-basis: 0;
   margin-bottom: 16px;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-left: 12px;
     margin-right: 12px;
     margin-bottom: 0;
-    height: 130px;
-    max-height: 130px;
+    height: ${({ isAutoVault }) => (isAutoVault ? '130px' : 'auto')};
   }
-
+}
   ${({ theme }) => theme.mediaQueries.xl} {
     margin-left: 32px;
     margin-right: 0;
-    margin-bottom: 0;
-    height: 130px;
-    max-height: 130px;
   }
 `
 
