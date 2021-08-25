@@ -99,7 +99,7 @@ const Pools: React.FC = () => {
 
   const pools = useMemo(() => {
     const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
-    const cakeAutoVault = { ...cakePool, isAutoVault: true }
+    const cakeAutoVault = { ...cakePool, isAutoVault: false }
     return [cakeAutoVault, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
 
@@ -223,9 +223,9 @@ const Pools: React.FC = () => {
   const cardLayout = (
     <CardLayout>
       {chosenPools.map((pool) =>
-     //   pool.isAutoVault ? (
-     //     <CakeVaultCard key="auto-cake" pool={pool} showStakedOnly={stakedOnly} />
-     //   ) : 
+        pool.isAutoVault ? (
+          <CakeVaultCard key="auto-cake" pool={pool} showStakedOnly={stakedOnly} />
+        ) : 
                        (
           <PoolCard key={pool.sousId} pool={pool} account={account} />
         ),
