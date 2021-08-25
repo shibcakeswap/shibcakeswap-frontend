@@ -8,6 +8,7 @@ import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
 import { Pool } from 'state/types'
 import { getAddress } from 'utils/addressHelpers'
+import { getInterestBreakdown } from 'utils/compoundApyHelpers'
 import PercentageButton from './PercentageButton'
 import useStakePool from '../../../hooks/useStakePool'
 import useUnstakePool from '../../../hooks/useUnstakePool'
@@ -52,6 +53,12 @@ const StakeModal: React.FC<StakeModalProps> = ({
 
   const usdValueStaked = stakeAmount && formatNumber(new BigNumber(stakeAmount).times(stakingTokenPrice).toNumber())
   const formattedUsdValueStaked = !usdValueStaked.isNaN() && formatNumber(usdValueStaked.toNumber())
+  
+  const interestBreakdown = getInterestBreakdown({
+    principalInUSD: !usdValueStaked.isNaN() ? usdValueStaked.toNumber() : 0,
+    apr,
+    earningTokenPrice,
+  })
   
   const getTokenLink = stakingToken.address ? `/swap?outputCurrency=${getAddress(stakingToken.address)}` : '/swap'
 
