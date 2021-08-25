@@ -71,7 +71,16 @@ const tokens = {
       97: '0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0',
     },
     decimals: 18,
-    projectLink: 'https://shibcakeswap.com/',
+    projectLink: 'https://shibcakeswap.finance/',
+  },
+  cakepcs: {
+    symbol: 'CAKE',
+    address: {
+      56: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      97: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+    },
+    decimals: 18,
+    projectLink: 'https://pancakeswap.finance/',
   },
   babycake: {
     symbol: 'BABYCAKE',
