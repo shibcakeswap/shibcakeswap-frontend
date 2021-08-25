@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, Button, ArrowForwardIcon, Skeleton } from '@shibcakeswap/uikit'
+import { Text, Flex, Button, Skeleton, Link } from '@shibcakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Container from 'components/Layout/Container'
-import { NavLink } from 'react-router-dom'
 import Balance from 'components/Balance'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -14,6 +13,10 @@ const NowLive = styled(Text)`
   font-weight: 600;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+`
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -28,7 +31,6 @@ const Wrapper = styled.div`
 const Inner = styled(Container)`
   display: flex;
   flex-direction: column-reverse;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
   }
@@ -49,22 +51,18 @@ const RightWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex: 0.5;
-
   & img {
     width: 80%;
     margin-top: 24px;
   }
-
   ${({ theme }) => theme.mediaQueries.sm} {
     & img {
       margin-top: 0;
     }
   }
-
   ${({ theme }) => theme.mediaQueries.md} {
     flex: 0.8;
   }
-
   ${({ theme }) => theme.mediaQueries.lg} {
     & img {
       margin-top: -25px;
@@ -75,7 +73,6 @@ const RightWrapper = styled.div`
 const PrizeFlex = styled(Flex)`
   flex-direction: column;
   margin-bottom: 8px;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
@@ -112,14 +109,11 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
               {inPrizes}
             </Text>
           </PrizeFlex>
-          <NavLink exact activeClassName="active" to="shibcake" id="lottery-pot-banner">
-            <Button>
-              <Text color="white" bold fontSize="16px" mr="4px">
-                {t('Go to the website')}
-              </Text>
-              <ArrowForwardIcon color="white" />
-            </Button>
-          </NavLink>
+          <StyledLink external href="https://shibcake.com">
+          <Button width="100%" mt="8px" variant="secondary">
+            {t('Go to the website')}
+          </Button>
+        </StyledLink>
         </LeftWrapper>
         <RightWrapper>
           <img src="/images/homepage/shibcake.png" alt="lottery bunny" />
@@ -129,4 +123,4 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
   )
 }
 
-export default LotteryBanner
+export default 
