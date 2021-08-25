@@ -223,9 +223,10 @@ const Pools: React.FC = () => {
   const cardLayout = (
     <CardLayout>
       {chosenPools.map((pool) =>
-        pool.isAutoVault ? (
-          <CakeVaultCard key="auto-cake" pool={pool} showStakedOnly={stakedOnly} />
-        ) : (
+     //   pool.isAutoVault ? (
+     //     <CakeVaultCard key="auto-cake" pool={pool} showStakedOnly={stakedOnly} />
+     //   ) : 
+                       (
           <PoolCard key={pool.sousId} pool={pool} account={account} />
         ),
       )}
