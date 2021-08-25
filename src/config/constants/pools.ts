@@ -12,9 +12,10 @@ const pools: PoolConfig[] = [
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
-    tokenPerBlock: '10',
+    tokenPerBlock: '2.5',
     sortOrder: 1,
     isFinished: false,
+    enableEmergencyWithdraw: true,
   },
 ]
 
