@@ -387,8 +387,11 @@ const Farms: React.FC = () => {
           {t('Farms')}
         </Heading>
         <Heading scale="lg" color="text">
-          {t('Stake LP tokens to earn. Important: On each transaction, the SHIBCAKE tax is applied, think long term.')}
+          {t('Stake LP tokens to earn.')}
         </Heading>
+        <Heading scale="lg" color="text">
+          {t('Important: On each transaction, the SHIBCAKE tax is applied, think long term.')}
+        </Heading
         
       </PageHeader>
       <Page>
