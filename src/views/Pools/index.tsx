@@ -247,7 +247,7 @@ const Pools: React.FC = () => {
               {t('Just stake some tokens to earn.')}
             </Heading>
             <Heading scale="md" color="text">
-              {t('High APR, low risk.')}
+              {t('Important: On each transaction, the SHIBCAKE tax is applied, think long term.')}
             </Heading>
           </Flex>
           <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
