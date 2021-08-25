@@ -123,4 +123,4 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
   )
 }
 
-export default 
+export default LotteryBanner
