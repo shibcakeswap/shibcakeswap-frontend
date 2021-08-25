@@ -390,7 +390,7 @@ const Farms: React.FC = () => {
           {t('Stake LP tokens to earn.')}
         </Heading>
         <Heading scale="lg" color="text">
-          {t('Important: On each transaction, the SHIBCAKE tax is applied, think long term.')}
+          {t('Important: On SHIBCAKE, the 20-21% tax is applied at the entrance/exit of the stake, think long term.')}
         </Heading
         
       </PageHeader>
