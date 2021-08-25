@@ -117,7 +117,7 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
           </PrizeFlex>
           <StyledLink external href="https://shibcake.com">
           <Button width="100%" mt="8px" variant="secondary">
-            {t('Go to the website', { symbol: stakingToken.symbol })}
+            {t('Go to the website')}
           </Button>
         </StyledLink>
         </LeftWrapper>
