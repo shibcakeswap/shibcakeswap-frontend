@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, Button, ArrowForwardIcon, Skeleton } from '@shibcakeswap/uikit'
+import { Text, Flex, Button, Skeleton, Link } from '@shibcakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Container from 'components/Layout/Container'
-import { NavLink } from 'react-router-dom'
 import Balance from 'components/Balance'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -14,6 +13,10 @@ const NowLive = styled(Text)`
   font-weight: 600;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+`
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -112,14 +115,11 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
               {inPrizes}
             </Text>
           </PrizeFlex>
-          <NavLink exact activeClassName="active" to="shibcake" id="lottery-pot-banner">
-            <Button>
-              <Text color="white" bold fontSize="16px" mr="4px">
-                {t('Go to the website')}
-              </Text>
-              <ArrowForwardIcon color="white" />
-            </Button>
-          </NavLink>
+          <StyledLink external href="https://shibcake.com">
+          <Button width="100%" mt="8px" variant="secondary">
+            {t('Go to the website', { symbol: stakingToken.symbol })}
+          </Button>
+        </StyledLink>
         </LeftWrapper>
         <RightWrapper>
           <img src="/images/homepage/shibcake.png" alt="lottery bunny" />
