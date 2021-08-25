@@ -47,13 +47,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 8,
-    lpSymbol: 'CAKE-CAKEPCS LP ShibcakeSwap',
+    lpSymbol: 'CAKE-CAKE LP ShibcakeSwap',
     lpAddresses: {
       97: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
       56: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
     },
     token: tokens.cake,
-    quoteToken: tokens.cakepcs,
+    quoteToken: tokens.cake,
   },
   {
     pid: 4,
