@@ -29,10 +29,7 @@ export const tokenEarnedPerThousandDollarsCompounding = ({
   return parseFloat(interestEarned.toFixed(roundingDecimals))
 }
 
-export const getRoi = ({ amountEarned, amountInvested }) => {
-  const percentage = (amountEarned / amountInvested) * 100
-  return percentage
-}
+
 
 // 1 day, 7 days, 30 days, 1 year, 5 years
 const DAYS_TO_CALCULATE_AGAINST = [1, 7, 30, 365, 1825]
