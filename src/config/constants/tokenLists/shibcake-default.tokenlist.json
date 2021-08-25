@@ -59,6 +59,14 @@
       "logoURI": "https://shibcakeswap.finance/images/tokens/0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0.png"
     },
     {
+      "name": "PancakeSwap Token",
+      "symbol": "CAKE",
+      "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://shibcakeswap.finance/images/tokens/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82.png"
+    },
+    {
       "name": "Shibcake",
       "symbol": "SHIBCAKE",
       "address": "0x90bdF238674569684a34F3AF8a3F55f08088bc98",
