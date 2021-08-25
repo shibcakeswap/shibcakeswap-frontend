@@ -51,6 +51,9 @@ const StakeModal: React.FC<StakeModalProps> = ({
   }
 
   const usdValueStaked = stakeAmount && formatNumber(new BigNumber(stakeAmount).times(stakingTokenPrice).toNumber())
+  const formattedUsdValueStaked = !usdValueStaked.isNaN() && formatNumber(usdValueStaked.toNumber())
+  
+  const getTokenLink = stakingToken.address ? `/swap?outputCurrency=${getAddress(stakingToken.address)}` : '/swap'
 
   useEffect(() => {
     if (stakingLimit.gt(0) && !isRemovingStake) {
@@ -150,7 +153,7 @@ const StakeModal: React.FC<StakeModalProps> = ({
       <BalanceInput
         value={stakeAmount}
         onUserInput={handleStakeInputChange}
-        currencyValue={stakingTokenPrice !== 0 && `~${usdValueStaked || 0} USD`}
+        currencyValue={stakingTokenPrice !== 0 && `~${formattedUsdValueStaked || 0} USD`}
         isWarning={hasReachedStakeLimit}
         decimals={stakingToken.decimals}
       />
@@ -192,11 +195,8 @@ const StakeModal: React.FC<StakeModalProps> = ({
         {pendingTx ? t('Confirming') : t('Confirm')}
       </Button>
       {!isRemovingStake && (
-        <StyledLink external href="/swap">
-          <Button width="100%" mt="8px" variant="secondary">
-            {t('Get %symbol%', { symbol: stakingToken.symbol })}
-          </Button>
-        </StyledLink>
+        
+        
       )}
     </Modal>
   )
