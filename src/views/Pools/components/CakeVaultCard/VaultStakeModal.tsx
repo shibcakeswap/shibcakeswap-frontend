@@ -54,6 +54,7 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
   const usdValueStaked =
     cakePriceBusd.gt(0) && stakeAmount ? formatNumber(new BigNumber(stakeAmount).times(cakePriceBusd).toNumber()) : ''
 
+  const getTokenLink = stakingToken.address ? `/swap?outputCurrency=${getAddress(stakingToken.address)}` : '/swap'
   const handleStakeInputChange = (input: string) => {
     if (input) {
       const convertedInput = new BigNumber(input).multipliedBy(BIG_TEN.pow(stakingToken.decimals))
@@ -212,7 +213,7 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
         {pendingTx ? t('Confirming') : t('Confirm')}
       </Button>
       {!isRemovingStake && (
-        <Button mt="8px" as="a" external href="/swap" variant="secondary">
+        <Button mt="8px" as="a" external href="{getTokenLink}" variant="secondary">
           {t('Get %symbol%', { symbol: stakingToken.symbol })}
         </Button>
       )}
