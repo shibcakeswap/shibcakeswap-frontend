@@ -95,6 +95,16 @@ const farms: FarmConfig[] = [
     token: tokens.busd,
     quoteToken: tokens.wbnb,
   },
+   {
+    pid: 14,
+    lpSymbol: 'USDT-BNB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '',
+      56: '0x23dbfdd7a8675983fa63215b8aace285cfcc124b',
+    },
+    token: tokens.usdt,
+    quoteToken: tokens.wbnb,
+  },
 ]
 
 export default farms
