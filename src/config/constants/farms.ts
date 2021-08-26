@@ -35,6 +35,26 @@ const farms: FarmConfig[] = [
     token: tokens.cake,
     quoteToken: tokens.wbnb,
   },
+    {
+    pid: 4,
+    lpSymbol: 'SHIBCAKE-BNB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x3067a8a504585c29f30bfcb5c7eaa6a942a18374',
+      56: '0x3067a8a504585c29f30bfcb5c7eaa6a942a18374',
+    },
+    token: tokens.shibcake,
+    quoteToken: tokens.wbnb,
+  },
+    {
+    pid: 2,
+    lpSymbol: 'SHIBCAKE-BNB LP PancakeSwap',
+    lpAddresses: {
+      97: '0x4f2d19bbd600e4e88396c2f6177ef9f2bfa30671',
+      56: '0x4f2d19bbd600e4e88396c2f6177ef9f2bfa30671',
+    },
+    token: tokens.shibcake,
+    quoteToken: tokens.wbnb,
+  },
   {
     pid: 6,
     lpSymbol: 'CAKE-BUSD LP ShibcakeSwap',
@@ -43,6 +63,16 @@ const farms: FarmConfig[] = [
       56: '0x853a4306e2106bd5bbafc94a9f94cd12118b4ab6',
     },
     token: tokens.cake,
+    quoteToken: tokens.busd,
+  },
+    {
+    pid: 7,
+    lpSymbol: 'SHIBCAKE-BUSD LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0xc563625ecf8935d474cb3cce6d243d36ba165012',
+      56: '0xc563625ecf8935d474cb3cce6d243d36ba165012',
+    },
+    token: tokens.shibcake,
     quoteToken: tokens.busd,
   },
   {
@@ -54,36 +84,6 @@ const farms: FarmConfig[] = [
     },
     token: tokens.cake,
     quoteToken: tokens.usdt,
-  },
-  {
-    pid: 4,
-    lpSymbol: 'SHIBCAKE-BNB LP ShibcakeSwap',
-    lpAddresses: {
-      97: '0x3067a8a504585c29f30bfcb5c7eaa6a942a18374',
-      56: '0x3067a8a504585c29f30bfcb5c7eaa6a942a18374',
-    },
-    token: tokens.shibcake,
-    quoteToken: tokens.wbnb,
-  },
-  {
-    pid: 2,
-    lpSymbol: 'SHIBCAKE-BNB LP PancakeSwap',
-    lpAddresses: {
-      97: '0x4f2d19bbd600e4e88396c2f6177ef9f2bfa30671',
-      56: '0x4f2d19bbd600e4e88396c2f6177ef9f2bfa30671',
-    },
-    token: tokens.shibcake,
-    quoteToken: tokens.wbnb,
-  },
-  {
-    pid: 7,
-    lpSymbol: 'SHIBCAKE-BUSD LP ShibcakeSwap',
-    lpAddresses: {
-      97: '0xc563625ecf8935d474cb3cce6d243d36ba165012',
-      56: '0xc563625ecf8935d474cb3cce6d243d36ba165012',
-    },
-    token: tokens.shibcake,
-    quoteToken: tokens.busd,
   },
   {
     pid: 3,
