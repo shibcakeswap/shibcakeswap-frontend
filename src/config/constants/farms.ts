@@ -37,7 +37,7 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 9,
-    lpSymbol: 'CAKE-CAKE LP ShibcakeSwap',
+    lpSymbol: 'CAKE-CAKEPCS LP ShibcakeSwap',
     lpAddresses: {
       97: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
       56: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
@@ -107,7 +107,7 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 16,
-    lpSymbol: 'CAKE-BNB LP ShibcakeSwap',
+    lpSymbol: 'CAKEPCS-BNB LP ShibcakeSwap',
     lpAddresses: {
       97: '0x3f32af6108591aebb0646730de23263d4371eec7',
       56: '0x3f32af6108591aebb0646730de23263d4371eec7',
@@ -127,7 +127,7 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 17,
-    lpSymbol: 'CAKE-BUSD LP ShibcakeSwap',
+    lpSymbol: 'CAKEPCS-BUSD LP ShibcakeSwap',
     lpAddresses: {
       97: '0xc27e6aacf06874544bcee91854eca1f65c754921',
       56: '0xc27e6aacf06874544bcee91854eca1f65c754921',
