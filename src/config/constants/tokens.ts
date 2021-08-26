@@ -75,7 +75,7 @@ const tokens = {
   },
   
   cakepcs: {
-    symbol: 'CAKE',
+    symbol: 'CAKEPCS',
     address: {
       56: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
       97: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
