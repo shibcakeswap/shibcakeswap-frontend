@@ -35,6 +35,16 @@ const farms: FarmConfig[] = [
     token: tokens.cake,
     quoteToken: tokens.wbnb,
   },
+  {
+    pid: 9,
+    lpSymbol: 'CAKE-CAKE LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
+      56: '0x55419d4b37e55531402047f36269ac89b8fa3f95',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.cakepcs,
+  },
     {
     pid: 4,
     lpSymbol: 'SHIBCAKE-BNB LP ShibcakeSwap',
@@ -95,6 +105,16 @@ const farms: FarmConfig[] = [
     token: tokens.busd,
     quoteToken: tokens.wbnb,
   },
+  {
+    pid: 16,
+    lpSymbol: 'CAKE-BNB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x3f32af6108591aebb0646730de23263d4371eec7',
+      56: '0x3f32af6108591aebb0646730de23263d4371eec7',
+    },
+    token: tokens.cakepcs,
+    quoteToken: tokens.wbnb,
+  },
    {
     pid: 14,
     lpSymbol: 'USDT-BNB LP ShibcakeSwap',
@@ -104,6 +124,16 @@ const farms: FarmConfig[] = [
     },
     token: tokens.usdt,
     quoteToken: tokens.wbnb,
+  },
+  {
+    pid: 17,
+    lpSymbol: 'CAKE-BUSD LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0xc27e6aacf06874544bcee91854eca1f65c754921',
+      56: '0xc27e6aacf06874544bcee91854eca1f65c754921',
+    },
+    token: tokens.cakepcs,
+    quoteToken: tokens.busd,
   },
   {
     pid: 15,
