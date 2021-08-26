@@ -22,8 +22,8 @@ const pools: PoolConfig[] = [
     stakingToken: tokens.shibcake,
     earningToken: tokens.cake,
     contractAddress: {
-      97: '0xCDDBf71D725838f07A8EE36b9e87be17c2B6A450',
-      56: '0xCDDBf71D725838f07A8EE36b9e87be17c2B6A450',
+      97: '0x9c7a11e06efcbe1a2e204a046fc42c0aa85bfc60',
+      56: '0x9c7a11e06efcbe1a2e204a046fc42c0aa85bfc60',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
