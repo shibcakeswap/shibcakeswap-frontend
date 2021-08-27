@@ -29,10 +29,6 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('Farms'),
     icon: 'FarmIcon',
     href: '/farms',
-    status: {
-      text: 'NEW POOLS',
-      color: 'success',
-    },
   },
  {
     label: t('Pools'),
@@ -82,7 +78,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'InfoIcon',
     href: 'https://shibcakeswap.info',
     status: {
-      text: 'NEW',
+      text: 'BETA',
       color: 'success',
     },
   },
