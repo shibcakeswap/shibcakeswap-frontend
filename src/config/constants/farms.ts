@@ -43,7 +43,7 @@ const farms: FarmConfig[] = [
       56: '0x35190810f81d745f21086061fb8f54fb10f386aa',
     },
     token: tokens.cake,
-    quoteToken: tokens.weth,
+    quoteToken: tokens.eth,
   },
    {
     pid: 6,
@@ -103,7 +103,7 @@ const farms: FarmConfig[] = [
       56: '0xece7f17e43c88c9b6797638eead0b0dbe99f69ca',
     },
     token: tokens.shibcake,
-    quoteToken: tokens.weth,
+    quoteToken: tokens.eth,
   },
     {
     pid: 7,
