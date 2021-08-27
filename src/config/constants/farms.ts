@@ -36,6 +36,26 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
+    pid: 19,
+    lpSymbol: 'CAKE-ETH LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x35190810f81d745f21086061fb8f54fb10f386aa',
+      56: '0x35190810f81d745f21086061fb8f54fb10f386aa',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.weth,
+  },
+   {
+    pid: 6,
+    lpSymbol: 'CAKE-BUSD LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x853a4306e2106bd5bbafc94a9f94cd12118b4ab6',
+      56: '0x853a4306e2106bd5bbafc94a9f94cd12118b4ab6',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.busd,
+  },
+  {
     pid: 9,
     lpSymbol: 'CAKE-CAKEPCS LP ShibcakeSwap',
     lpAddresses: {
@@ -44,6 +64,16 @@ const farms: FarmConfig[] = [
     },
     token: tokens.cake,
     quoteToken: tokens.cakepcs,
+  },
+    {
+    pid: 13,
+    lpSymbol: 'CAKE-USDT LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x67d870b1bd463641a69b93a6b9b1dc7074a53a0c',
+      56: '0x67d870b1bd463641a69b93a6b9b1dc7074a53a0c',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.usdt,
   },
     {
     pid: 4,
@@ -66,14 +96,14 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
-    pid: 6,
-    lpSymbol: 'CAKE-BUSD LP ShibcakeSwap',
+    pid: 20,
+    lpSymbol: 'SHIBCAKE-ETH LP ShibcakeSwap',
     lpAddresses: {
-      97: '0x853a4306e2106bd5bbafc94a9f94cd12118b4ab6',
-      56: '0x853a4306e2106bd5bbafc94a9f94cd12118b4ab6',
+      97: '0xece7f17e43c88c9b6797638eead0b0dbe99f69ca',
+      56: '0xece7f17e43c88c9b6797638eead0b0dbe99f69ca',
     },
-    token: tokens.cake,
-    quoteToken: tokens.busd,
+    token: tokens.shibcake,
+    quoteToken: tokens.weth,
   },
     {
     pid: 7,
@@ -84,16 +114,6 @@ const farms: FarmConfig[] = [
     },
     token: tokens.shibcake,
     quoteToken: tokens.busd,
-  },
-  {
-    pid: 13,
-    lpSymbol: 'CAKE-USDT LP ShibcakeSwap',
-    lpAddresses: {
-      97: '0x67d870b1bd463641a69b93a6b9b1dc7074a53a0c',
-      56: '0x67d870b1bd463641a69b93a6b9b1dc7074a53a0c',
-    },
-    token: tokens.cake,
-    quoteToken: tokens.usdt,
   },
   {
     pid: 3,
