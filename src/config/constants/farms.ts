@@ -36,7 +36,7 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
-    pid: 19,
+    pid: 18,
     lpSymbol: 'CAKE-ETH LP ShibcakeSwap',
     lpAddresses: {
       97: '0x35190810f81d745f21086061fb8f54fb10f386aa',
@@ -96,7 +96,7 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
-    pid: 20,
+    pid: 19,
     lpSymbol: 'SHIBCAKE-ETH LP ShibcakeSwap',
     lpAddresses: {
       97: '0xece7f17e43c88c9b6797638eead0b0dbe99f69ca',
