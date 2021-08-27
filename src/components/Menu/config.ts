@@ -77,11 +77,15 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
  //     },
  //   ],
  // },
- // {
- //   label: t('Info'),
- //   icon: 'InfoIcon',
- //   href: 'https://info.shibcakeswap.com',
- // },
+ {
+    label: t('Info'),
+    icon: 'InfoIcon',
+    href: 'https://shibcakeswap.info',
+    status: {
+      text: 'NEW',
+      color: 'success',
+    },
+  },
  // {
  //   label: t('IFO'),
  //   icon: 'IfoIcon',
