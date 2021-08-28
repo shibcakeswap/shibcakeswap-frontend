@@ -79,7 +79,6 @@ export interface PoolConfig {
   harvest?: boolean
   isFinished?: boolean
   enableEmergencyWithdraw?: boolean
-  harvestInterval?: number
 }
 
 export type Images = {
