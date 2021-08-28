@@ -16,6 +16,8 @@ import useToast from 'hooks/useToast'
 import { fetchCakeVaultUserData } from 'state/pools'
 import { Pool } from 'state/types'
 import { getAddress } from 'utils/addressHelpers'
+import { ToastDescriptionWithTx } from 'components/Toast'
+import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { convertCakeToShares } from '../../helpers'
 import FeeSummary from './FeeSummary'
 
@@ -36,7 +38,7 @@ const callOptions = {
 
 const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isRemovingStake = false, onDismiss }) => {
   const dispatch = useAppDispatch()
-  const { stakingToken } = pool
+  const { stakingToken, earningToken, apr, stakingTokenPrice, earningTokenPrice } = pool
   const { account } = useWeb3React()
   const cakeVaultContract = useCakeVaultContract()
   const {
@@ -51,9 +53,10 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
   const [percent, setPercent] = useState(0)
   const { hasUnstakingFee } = useWithdrawalFeeTimer(parseInt(lastDepositedTime, 10), userShares)
   const cakePriceBusd = usePriceCakeBusd()
-  const usdValueStaked =
-    cakePriceBusd.gt(0) && stakeAmount ? formatNumber(new BigNumber(stakeAmount).times(cakePriceBusd).toNumber()) : ''
+  const usdValueStaked = new BigNumber(stakeAmount).times(cakePriceBusd)
+  const formattedUsdValueStaked = cakePriceBusd.gt(0) && stakeAmount ? formatNumber(usdValueStaked.toNumber()) : ''
 
+  
   const handleStakeInputChange = (input: string) => {
     if (input) {
       const convertedInput = new BigNumber(input).multipliedBy(BIG_TEN.pow(stakingToken.decimals))
@@ -84,12 +87,17 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
     const sharesRemaining = userShares.minus(shareStakeToWithdraw.sharesAsBigNumber)
     const isWithdrawingAll = sharesRemaining.lte(triggerWithdrawAllThreshold)
 
-    if (isWithdrawingAll) {
+if (isWithdrawingAll) {
       try {
-        const tx = await cakeVaultContract.withdrawAll(callOptions)
+        const tx = await callWithGasPrice(cakeVaultContract, 'withdrawAll', undefined, callOptions)
         const receipt = await tx.wait()
         if (receipt.status) {
-          toastSuccess(t('Unstaked!'), t('Your earnings have also been harvested to your wallet'))
+          toastSuccess(
+            t('Unstaked!'),
+            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+              {t('Your earnings have also been harvested to your wallet')}
+            </ToastDescriptionWithTx>,
+          )
           setPendingTx(false)
           onDismiss()
           dispatch(fetchCakeVaultUserData({ account }))
@@ -102,10 +110,20 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
       // .toString() being called to fix a BigNumber error in prod
       // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
       try {
-        const tx = await cakeVaultContract.withdraw(shareStakeToWithdraw.sharesAsBigNumber.toString(), callOptions)
+        const tx = await callWithGasPrice(
+          cakeVaultContract,
+          'withdraw',
+          [shareStakeToWithdraw.sharesAsBigNumber.toString()],
+          callOptions,
+        )
         const receipt = await tx.wait()
         if (receipt.status) {
-          toastSuccess(t('Unstaked!'), t('Your earnings have also been harvested to your wallet'))
+          toastSuccess(
+            t('Unstaked!'),
+            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+              {t('Your earnings have also been harvested to your wallet')}
+            </ToastDescriptionWithTx>,
+          )
           setPendingTx(false)
           onDismiss()
           dispatch(fetchCakeVaultUserData({ account }))
@@ -122,10 +140,15 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
     try {
       // .toString() being called to fix a BigNumber error in prod
       // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
-      const tx = await cakeVaultContract.deposit(convertedStakeAmount.toString(), callOptions)
+      const tx = await callWithGasPrice(cakeVaultContract, 'deposit', [convertedStakeAmount.toString()], callOptions)
       const receipt = await tx.wait()
       if (receipt.status) {
-        toastSuccess(t('Staked!'), t('Your funds have been staked in the pool'))
+        toastSuccess(
+          t('Staked!'),
+          <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+            {t('Your funds have been staked in the pool')}
+          </ToastDescriptionWithTx>,
+        )
         setPendingTx(false)
         onDismiss()
         dispatch(fetchCakeVaultUserData({ account }))
@@ -170,7 +193,7 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isR
       <BalanceInput
         value={stakeAmount}
         onUserInput={handleStakeInputChange}
-        currencyValue={cakePriceBusd.gt(0) && `~${usdValueStaked || 0} USD`}
+        currencyValue={cakePriceBusd.gt(0) && `~${formattedUsdValueStaked || 0} USD`}
         decimals={stakingToken.decimals}
       />
       <Text mt="8px" ml="auto" color="textSubtle" fontSize="12px" mb="8px">
