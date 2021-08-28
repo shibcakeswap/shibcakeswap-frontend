@@ -31,8 +31,8 @@ export const convertCakeToShares = (
   return { sharesAsNumberBalance, sharesAsBigNumber, sharesAsDisplayBalance }
 }
 
-const AUTO_VAULT_COMPOUND_FREQUENCY = 288
-const MANUAL_POOL_COMPOUND_FREQUENCY = 1
+const AUTO_VAULT_COMPOUND_FREQUENCY = 5000
+const MANUAL_POOL_COMPOUND_FREQUENCY = 0
 
 export const getAprData = (pool: Pool, performanceFee: number) => {
   const { isAutoVault, earningTokenPrice, apr } = pool
