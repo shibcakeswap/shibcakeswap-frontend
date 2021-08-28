@@ -1,8 +1,5 @@
-import BigNumber from 'bignumber.js'
-import { useEffect, useState } from 'react'
-import { getBalanceNumber } from 'utils/formatBalance'
 
-import { fetchPoolsTotalStaking } from '../state/pools/fetchPools'
+import { useEffect, useState } from 'react'
 
 /*
  * Due to Cors the api was forked and a proxy was created
@@ -12,45 +9,23 @@ export const baseUrl = 'https://api-sigma-eight.vercel.app/api'
 
 /* eslint-disable camelcase */
 
-export interface ApiSummaryResponse {
+export interface ApiTvlResponse {
   update_at: string
-  data: Map<string, Summary>
-}
-
-export interface Summary {
-  liquidity: string
-}
-
-export interface Stats {
-  tvl: number
+  '24h_total_volume': number
+  total_value_locked: number
+  total_value_locked_all: number
 }
 
 export const useGetStats = () => {
-  const [data, setData] = useState<Stats | null>(null)
+  const [data, setData] = useState<ApiTvlResponse | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${baseUrl}/summary`)
-        const responsedata: ApiSummaryResponse = await response.json()
+        const responseData: ApiTvlResponse = await response.json()
 
-        const stats: Stats = { tvl: 0 }
-        // eslint-disable-next-line
-        Object.keys(responsedata.data).forEach(function (key) {
-          stats.tvl += parseInt(responsedata.data[key].liquidity)
-        })
-
-        const pools = await fetchPoolsTotalStaking()
-        const cakePrice = parseInt(
-          responsedata.data['0x55d398326f99059fF775485246999027B3197955_0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0']
-            .price,
-        )
-        pools.forEach((pool) => {
-          const total = getBalanceNumber(new BigNumber(pool.totalStaked), 18) / cakePrice
-          stats.tvl += total
-        })
-
-        setData(stats)
+        setData(responseData)
       } catch (error) {
         console.error('Unable to fetch data:', error)
       }
