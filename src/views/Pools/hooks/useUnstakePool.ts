@@ -24,7 +24,7 @@ const sousEmergencyUnstake = async (sousChefContract) => {
   return receipt.status
 }
 
-const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
+const useUnstakePool = (sousId: number, enableEmergencyWithdraw = true) => {
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
   const masterChefContract = useMasterchef()
@@ -33,11 +33,11 @@ const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
   const handleUnstake = useCallback(
     async (amount: string, decimals: number) => {
       if (sousId === 0) {
-        await unstakeFarm(masterChefContract, 0, amount)
+        await unstakeFarm(masterChefContract, 0, amount, account)
       } else if (enableEmergencyWithdraw) {
-        await sousEmergencyUnstake(sousChefContract)
+        await sousEmergencyUnstake(sousChefContract, amount, account)
       } else {
-        await sousUnstake(sousChefContract, amount, decimals)
+        await sousUnstake(sousChefContract, amount, account)
       }
       dispatch(updateUserStakedBalance(sousId, account))
       dispatch(updateUserBalance(sousId, account))
