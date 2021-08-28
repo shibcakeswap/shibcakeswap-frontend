@@ -11,17 +11,11 @@ const StyledTotalValueLockedCard = styled(Card)`
   flex: 1;
 `
 
-export interface ApiTvlResponse {
-  update_at: string
-  '24h_total_volume': number
-  total_value_locked: number
-  total_value_locked_all: number
-}
 
 const TotalValueLockedCard = () => {
   const { t } = useTranslation()
   const data = useGetStats()
-  const tvl = data ? data?.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
+  const tvl = data ? data.tvl.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
 
   return (
     <StyledTotalValueLockedCard>
