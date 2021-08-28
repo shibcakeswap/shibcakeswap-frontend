@@ -56,10 +56,9 @@ const Home: React.FC = () => {
             <CakeStats />
           </Cards>
           
-          <Cards>
-            <TotalValueLockedCard />
-          </Cards>
+            
         </div>
+        <TotalValueLockedCard />
       </Page>
     </>
   )
