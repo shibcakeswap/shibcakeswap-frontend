@@ -34,7 +34,7 @@ export const useGetStats = () => {
         const response = await fetch(`${baseUrl}/summary`)
         const responsedata: ApiSummaryResponse = await response.json()
 
-        const stats: Stats = { tvl: 0 }
+        const stats: Stats = { tvl }
         // eslint-disable-next-line
         Object.keys(responsedata.data).forEach(function (key) {
           stats.tvl += parseInt(responsedata.data[key].liquidity)
