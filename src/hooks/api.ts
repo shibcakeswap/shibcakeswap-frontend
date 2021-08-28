@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
  * Due to Cors the api was forked and a proxy was created
  * @see https://github.com/lydiaswap/gatsby-lydia-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
  */
-export const baseUrl = 'https://data-neon.vercel.app'
+export const baseUrl = 'https://apitvl.vercel.app'
 
 /* eslint-disable camelcase */
 
