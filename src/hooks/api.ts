@@ -42,7 +42,7 @@ export const useGetStats = () => {
 
         const pools = await fetchPoolsTotalStaking()
         const cakePrice = parseInt(
-          responsedata.data['0x55d398326f99059fF775485246999027B3197955_0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0']
+          responsedata.data['0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0_0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56']
             .price,
         )
         pools.forEach((pool) => {
