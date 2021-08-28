@@ -1,15 +1,12 @@
 import BigNumber from 'bignumber.js'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useFarms, useGetApiPrices, usePools } from 'state/hooks'
-import { getAddress } from 'utils/addressHelpers'
-import { Farm } from 'state/types'
-import FarmCard, { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 
+import { fetchPoolsTotalStaking } from '../state/pools/fetchPools'
 
 /*
  * Due to Cors the api was forked and a proxy was created
- * @see https://github.com/pancakeswap/gatsby-pancake-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
+ * @see https://github.com/lydiaswap/gatsby-lydia-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
  */
 export const baseUrl = 'https://api-sigma-eight.vercel.app/api'
 
@@ -20,7 +17,7 @@ export interface ApiSummaryResponse {
   data: Map<string, Summary>
 }
 
-export interface  Summary{
+export interface Summary {
   liquidity: string
 }
 
@@ -29,42 +26,38 @@ export interface Stats {
 }
 
 export const useGetStats = () => {
-  const { data: farmsLP } = useFarms()
-  const prices = useGetApiPrices()
-  const farmsList = useCallback(
-    (farmsToDisplay: Farm[]): FarmWithStakedValue[] => {
-      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
-        if (!farm.lpTotalInQuoteToken || !prices) {
-          return farm
-        }
+  const [data, setData] = useState<Stats | null>(null)
 
-        const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/summary`)
+        const responsedata: ApiSummaryResponse = await response.json()
 
-        return { ...farm, liquidity: totalLiquidity }
-      })
+        const stats: Stats = { tvl: 0 }
+        // eslint-disable-next-line
+        Object.keys(responsedata.data).forEach(function (key) {
+          stats.tvl += parseInt(responsedata.data[key].liquidity)
+        })
 
-      return farmsToDisplayWithAPR
-    },
-    [prices],
-  )
+        const pools = await fetchPoolsTotalStaking()
+        const cakePrice = parseInt(
+          responsedata.data['0x55d398326f99059fF775485246999027B3197955_0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0']
+            .price,
+        )
+        pools.forEach((pool) => {
+          const total = getBalanceNumber(new BigNumber(pool.totalStaked), 18) / cakePrice
+          stats.tvl += total
+        })
 
-  const stats: Stats = {tvl: 0};
-  const flist = farmsList(farmsLP)
-  flist.forEach((farm) => {
-    const liquidityPrice = getBalanceNumber(farm.liquidity, 0)
-    stats.tvl += liquidityPrice
-  })
-  
-  const pools = usePools(null)
-  if(prices != null) {
-    pools.forEach((pool) =>{
-      if(getAddress(pool.stakingToken.address).toLowerCase() in prices){
-        const totalStaked = pool.totalStaked? getBalanceNumber(pool.totalStaked, pool.stakingToken.decimals) : 0
-        const stakingTokenPrice = prices[getAddress(pool.stakingToken.address).toLowerCase()]
-        stats.tvl += totalStaked*stakingTokenPrice
+        setData(stats)
+      } catch (error) {
+        console.error('Unable to fetch data:', error)
       }
-    })
-  }
-  return stats
+    }
+
+    fetchData()
+  }, [setData])
+
+  return data
 }
