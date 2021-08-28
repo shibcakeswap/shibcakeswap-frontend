@@ -83,4 +83,4 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
   )
 }
 
-export default 
+export default CakeVaultCard
