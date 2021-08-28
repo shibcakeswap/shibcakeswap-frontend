@@ -1,4 +1,4 @@
-import { Pair, Token } from '@shibcakeswap/sdk'
+import { ChainId, Pair, Token } from '@shibcakeswap/sdk'
 import flatMap from 'lodash/flatMap'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,8 +18,9 @@ import {
   muteAudio,
   unmuteAudio,
   toggleTheme as toggleThemeAction,
+  updateGasPrice,
 } from '../actions'
-import { serializeToken, deserializeToken } from './helpers'
+import { serializeToken, GAS_PRICE_GWEI, deserializeToken } from './helpers'
 
 export function useAudioModeManager(): [boolean, () => void] {
   const dispatch = useDispatch<AppDispatch>()
@@ -129,6 +130,26 @@ export function useRemoveUserAddedToken(): (chainId: number, address: string) =>
     },
     [dispatch],
   )
+}
+
+export function useGasPrice(): string {
+  const chainId = process.env.REACT_APP_CHAIN_ID
+  const userGas = useSelector<AppState, AppState['user']['gasPrice']>((state) => state.user.gasPrice)
+  return chainId === ChainId.MAINNET.toString() ? userGas : GAS_PRICE_GWEI.testnet
+}
+
+export function useGasPriceManager(): [string, (userGasPrice: string) => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const userGasPrice = useGasPrice()
+
+  const setGasPrice = useCallback(
+    (gasPrice: string) => {
+      dispatch(updateGasPrice({ gasPrice }))
+    },
+    [dispatch],
+  )
+
+  return [userGasPrice, setGasPrice]
 }
 
 function serializePair(pair: Pair): SerializedPair {
