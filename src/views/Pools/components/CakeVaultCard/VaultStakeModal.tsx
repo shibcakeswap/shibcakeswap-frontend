@@ -16,7 +16,6 @@ import useToast from 'hooks/useToast'
 import { fetchCakeVaultUserData } from 'state/pools'
 import { Pool } from 'state/types'
 import { getAddress } from 'utils/addressHelpers'
-import { ToastDescriptionWithTx } from 'components/Toast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { convertCakeToShares } from '../../helpers'
 import FeeSummary from './FeeSummary'
@@ -92,12 +91,7 @@ if (isWithdrawingAll) {
         const tx = await callWithGasPrice(cakeVaultContract, 'withdrawAll', undefined, callOptions)
         const receipt = await tx.wait()
         if (receipt.status) {
-          toastSuccess(
-            t('Unstaked!'),
-            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-              {t('Your earnings have also been harvested to your wallet')}
-            </ToastDescriptionWithTx>,
-          )
+          toastSuccess(t('Unstaked!'), t('Your earnings have also been harvested to your wallet'))
           setPendingTx(false)
           onDismiss()
           dispatch(fetchCakeVaultUserData({ account }))
@@ -118,12 +112,7 @@ if (isWithdrawingAll) {
         )
         const receipt = await tx.wait()
         if (receipt.status) {
-          toastSuccess(
-            t('Unstaked!'),
-            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-              {t('Your earnings have also been harvested to your wallet')}
-            </ToastDescriptionWithTx>,
-          )
+          toastSuccess(t('Unstaked!'), t('Your earnings have also been harvested to your wallet'))
           setPendingTx(false)
           onDismiss()
           dispatch(fetchCakeVaultUserData({ account }))
@@ -143,12 +132,7 @@ if (isWithdrawingAll) {
       const tx = await callWithGasPrice(cakeVaultContract, 'deposit', [convertedStakeAmount.toString()], callOptions)
       const receipt = await tx.wait()
       if (receipt.status) {
-        toastSuccess(
-          t('Staked!'),
-          <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('Your funds have been staked in the pool')}
-          </ToastDescriptionWithTx>,
-        )
+        toastSuccess(t('Staked!'), t('Your funds have been staked in the pool'))
         setPendingTx(false)
         onDismiss()
         dispatch(fetchCakeVaultUserData({ account }))
