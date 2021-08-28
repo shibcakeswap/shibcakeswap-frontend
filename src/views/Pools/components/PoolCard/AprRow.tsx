@@ -6,15 +6,18 @@ import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import { Pool } from 'state/types'
 import { getAprData } from 'views/Pools/helpers'
 import { getAddress } from 'utils/addressHelpers'
+import BigNumber from 'bignumber.js'
 
 interface AprRowProps {
   pool: Pool
+  stakedBalance: BigNumber
   performanceFee?: number
 }
 
-const AprRow: React.FC<AprRowProps> = ({ pool, performanceFee = 0 }) => {
+const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0 }) => {
   const { t } = useTranslation()
-  const { stakingToken, earningToken, isFinished, apr, earningTokenPrice, isAutoVault } = pool
+  const { stakingToken, earningToken, isFinished, apr, earningTokenPrice, stakingTokenPrice, userData, isAutoVault } = pool
+  
 
   const tooltipContent = isAutoVault
     ? t('APY includes compounding, APR doesn’t. This pool’s CAKE is compounded automatically, so we show APY.')
