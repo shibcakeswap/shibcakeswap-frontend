@@ -2,6 +2,8 @@ import BigNumber from 'bignumber.js'
 import { useEffect, useState } from 'react'
 import { getBalanceNumber } from 'utils/formatBalance'
 
+import { fetchPoolsTotalStaking } from '../state/pools/fetchPools'
+
 /*
  * Due to Cors the api was forked and a proxy was created
  * @see https://github.com/lydiaswap/gatsby-lydia-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
