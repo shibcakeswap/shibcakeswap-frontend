@@ -147,7 +147,7 @@ export default createReducer(initialState, (builder) =>
     })
     .addCase(toggleTheme, (state) => {
       state.isDark = !state.isDark
-    }),
+    })
     .addCase(updateGasPrice, (state, action) => {
       state.gasPrice = action.payload.gasPrice
     }),
