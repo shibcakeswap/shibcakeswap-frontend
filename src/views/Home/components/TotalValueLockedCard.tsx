@@ -44,4 +44,4 @@ const TotalValueLockedCard = () => {
   )
 }
 
-export default 
+export default TotalValueLockedCard
