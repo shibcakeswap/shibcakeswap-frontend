@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
  * Due to Cors the api was forked and a proxy was created
  * @see https://github.com/lydiaswap/gatsby-lydia-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
  */
-export const baseUrl = 'https://data-neon.vercel.app'
+export const baseUrl = 'https://api-sigma-eight.vercel.app/api'
 
 /* eslint-disable camelcase */
 
@@ -21,7 +21,7 @@ export const useGetStats = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${baseUrl}/stat`)
+        const response = await fetch(`${baseUrl}/summary`)
         const responsedata: ApiTvlResponse = await response.json()
 
         setData(responsedata)
