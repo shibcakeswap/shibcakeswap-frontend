@@ -6,7 +6,7 @@ import { PoolsState, Pool, CakeVault, VaultFees, VaultUser, AppThunk } from 'sta
 import { getPoolApr } from 'utils/apr'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { getAddress } from 'utils/addressHelpers'
-import { fetchPoolsBlockLimits, fetchPoolsStakingLimits, fetchPoolsTotalStaking } from './fetchPools'
+import { fetchPools, fetchPoolsBlockLimits, fetchPoolsStakingLimits, fetchPoolsTotalStaking } from './fetchPools'
 import {
   fetchPoolsAllowance,
   fetchUserBalances,
@@ -46,12 +46,13 @@ const initialState: PoolsState = {
 export const fetchPoolsPublicDataAsync = (currentBlock: number) => async (dispatch, getState) => {
   const blockLimits = await fetchPoolsBlockLimits()
   const totalStakings = await fetchPoolsTotalStaking()
-
+  const infos = await fetchPools()
   const prices = getTokenPricesFromFarm(getState().farms.data)
 
   const liveData = poolsConfig.map((pool) => {
     const blockLimit = blockLimits.find((entry) => entry.sousId === pool.sousId)
     const totalStaking = totalStakings.find((entry) => entry.sousId === pool.sousId)
+    const info = infos.find((entry) => entry.sousId === pool.sousId)
     const isPoolEndBlockExceeded = currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
     const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
 
@@ -70,6 +71,7 @@ export const fetchPoolsPublicDataAsync = (currentBlock: number) => async (dispat
       : 0
 
     return {
+      ...info,
       ...blockLimit,
       ...totalStaking,
       stakingTokenPrice,
