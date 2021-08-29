@@ -147,13 +147,13 @@ const farms: FarmConfig[] = [
   },
     {
     pid: 11,
-    lpSymbol: 'BTCB-BNB LP ShibcakeSwap',
+    lpSymbol: 'BNB-BTCB LP ShibcakeSwap',
     lpAddresses: {
       97: '',
       56: '0xc52c61c3af83aa026c4de6480183eb07a31c664f',
     },
-    token: tokens.btcb,
-    quoteToken: tokens.wbnb,
+    token: tokens.wbnb,
+    quoteToken: tokens.btcb,
   },
   {
     pid: 16,
@@ -187,13 +187,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 12,
-    lpSymbol: 'BTCB-BUSD LP ShibcakeSwap',
+    lpSymbol: 'BUSD-BTCB LP ShibcakeSwap',
     lpAddresses: {
       97: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
       56: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
     },
-    token: tokens.btcb,
-    quoteToken: tokens.busd,
+    token: tokens.busd,
+    quoteToken: tokens.btcb,
   },
   {
     pid: 17,
@@ -217,13 +217,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 23,
-    lpSymbol: 'BTCB-ETH LP ShibcakeSwap',
+    lpSymbol: 'ETH-BTCB LP ShibcakeSwap',
     lpAddresses: {
       97: '',
       56: '0xdd33877c7b1ef254d66d9717bd319380d9563ed8',
     },
-    token: tokens.btcb,
-    quoteToken: tokens.eth,
+    token: tokens.eth,
+    quoteToken: tokens.btcb,
   },
 ]
 
