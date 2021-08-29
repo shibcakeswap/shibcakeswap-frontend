@@ -37,13 +37,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 10,
-    lpSymbol: 'CAKE-BTCB LP ShibcakeSwap',
+    lpSymbol: 'BTCB-CAKE LP ShibcakeSwap',
     lpAddresses: {
       97: '0x79cfe49a0cdb8c2e8c11cb586fd3bc07bf3affa8',
       56: '0x79cfe49a0cdb8c2e8c11cb586fd3bc07bf3affa8',
     },
-    token: tokens.cake,
-    quoteToken: tokens.btcb,
+    token: tokens.btcb,
+    quoteToken: tokens.cake,
   },
   {
     pid: 18,
@@ -107,13 +107,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 22,
-    lpSymbol: 'SHIBCAKE-BTCB LP ShibcakeSwap',
+    lpSymbol: 'BTCB-SHIBCAKE LP ShibcakeSwap',
     lpAddresses: {
       97: '0xf2be9c35206bf242b81b50624b2a29a223e5bbb7',
       56: '0xf2be9c35206bf242b81b50624b2a29a223e5bbb7',
     },
-    token: tokens.shibcake,
-    quoteToken: tokens.btcb,
+    token: tokens.btcb,
+    quoteToken: tokens.shibcake,
   },
   {
     pid: 19,
@@ -147,13 +147,13 @@ const farms: FarmConfig[] = [
   },
     {
     pid: 11,
-    lpSymbol: 'BNB-BTCB LP ShibcakeSwap',
+    lpSymbol: 'BTCB-BNB LP ShibcakeSwap',
     lpAddresses: {
       97: '',
       56: '0xc52c61c3af83aa026c4de6480183eb07a31c664f',
     },
-    token: tokens.wbnb,
-    quoteToken: tokens.btcb,
+    token: tokens.btcb,
+    quoteToken: tokens.wbnb,
   },
   {
     pid: 16,
@@ -187,13 +187,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 12,
-    lpSymbol: 'BUSD-BTCB LP ShibcakeSwap',
+    lpSymbol: 'BTCB-BUSD LP ShibcakeSwap',
     lpAddresses: {
       97: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
       56: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
     },
-    token: tokens.busd,
-    quoteToken: tokens.btcb,
+    token: tokens.btcb,
+    quoteToken: tokens.busd,
   },
   {
     pid: 17,
@@ -217,13 +217,13 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 23,
-    lpSymbol: 'ETH-BTCB LP ShibcakeSwap',
+    lpSymbol: 'BTCB-ETH LP ShibcakeSwap',
     lpAddresses: {
       97: '',
       56: '0xdd33877c7b1ef254d66d9717bd319380d9563ed8',
     },
-    token: tokens.eth,
-    quoteToken: tokens.btcb,
+    token: tokens.btcb,
+    quoteToken: tokens.eth,
   },
 ]
 
