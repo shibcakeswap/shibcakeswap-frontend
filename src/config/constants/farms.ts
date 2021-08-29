@@ -215,6 +215,16 @@ const farms: FarmConfig[] = [
     token: tokens.usdt,
     quoteToken: tokens.busd,
   },
+  {
+    pid: 23,
+    lpSymbol: 'BTCB-ETH LP ShibcakeSwap',
+    lpAddresses: {
+      97: '',
+      56: '0xdd33877c7b1ef254d66d9717bd319380d9563ed8',
+    },
+    token: tokens.btcb,
+    quoteToken: tokens.eth,
+  },
 ]
 
 export default farms
