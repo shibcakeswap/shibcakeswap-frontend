@@ -23,6 +23,7 @@ import FeeSummary from './FeeSummary'
 interface VaultStakeModalProps {
   pool: Pool
   stakingMax: BigNumber
+  performanceFee?: number
   isRemovingStake?: boolean
   onDismiss?: () => void
 }
@@ -35,7 +36,7 @@ const callOptions = {
   gasLimit: 380000,
 }
 
-const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, isRemovingStake = false, onDismiss }) => {
+const VaultStakeModal: React.FC<VaultStakeModalProps> = ({ pool, stakingMax, performanceFee, isRemovingStake = false, onDismiss }) => {
   const dispatch = useAppDispatch()
   const { stakingToken, earningToken, apr, stakingTokenPrice, earningTokenPrice } = pool
   const { account } = useWeb3React()
