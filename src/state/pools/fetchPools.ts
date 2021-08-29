@@ -4,9 +4,10 @@ import sousChefABI from 'config/abi/sousChef.json'
 import cakeABI from 'config/abi/cake.json'
 import wbnbABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
-import { getAddress, getWbnbAddress } from 'utils/addressHelpers'
+import { getAddress, getMasterChefAddress getWbnbAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getSouschefV2Contract } from 'utils/contractHelpers'
+import masterchefABI from 'config/abi/masterchef.json'
 
 export const fetchPoolsBlockLimits = async () => {
   const poolsWithEnd = poolsConfig.filter((p) => p.sousId !== 0)
@@ -36,6 +37,26 @@ export const fetchPoolsBlockLimits = async () => {
     }
   })
 }
+
+export const fetchPools = async () => {
+  const nonBnbPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'BNB')
+  const calls = nonBnbPools.map((poolConfig) => {
+    return {
+      address: getMasterChefAddress(),
+      name: 'poolInfo',
+      params: [poolConfig.sousId],
+    }
+  })
+  const poolsInfo = await multicall(masterchefABI, calls)
+  return nonBnbPools.map((p, index) => {
+    const info = poolsInfo[index]
+
+    return {
+      sousId: p.sousId,
+    }
+  })
+}
+
 
 export const fetchPoolsTotalStaking = async () => {
   const nonBnbPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'BNB')
