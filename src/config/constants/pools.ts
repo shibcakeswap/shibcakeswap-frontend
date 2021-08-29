@@ -29,6 +29,7 @@ const pools: PoolConfig[] = [
     harvest: true,
     sortOrder: 999,
     tokenPerBlock: '0.0005000',
+    isFinished: false,
     enableEmergencyWithdraw: true,
   },
 ]
