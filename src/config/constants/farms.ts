@@ -36,6 +36,16 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
+    pid: 10,
+    lpSymbol: 'CAKE-BTCB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0x79cfe49a0cdb8c2e8c11cb586fd3bc07bf3affa8',
+      56: '0x79cfe49a0cdb8c2e8c11cb586fd3bc07bf3affa8',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.btcb,
+  },
+  {
     pid: 18,
     lpSymbol: 'CAKE-ETH LP ShibcakeSwap',
     lpAddresses: {
@@ -96,6 +106,16 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
+    pid: 22,
+    lpSymbol: 'SHIBCAKE-BTCB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0xf2be9c35206bf242b81b50624b2a29a223e5bbb7',
+      56: '0xf2be9c35206bf242b81b50624b2a29a223e5bbb7',
+    },
+    token: tokens.shibcake,
+    quoteToken: tokens.btcb,
+  },
+  {
     pid: 19,
     lpSymbol: 'SHIBCAKE-ETH LP ShibcakeSwap',
     lpAddresses: {
@@ -123,6 +143,16 @@ const farms: FarmConfig[] = [
       56: '0xc52c61c3af83aa026c4de6480183eb07a31c664f',
     },
     token: tokens.busd,
+    quoteToken: tokens.wbnb,
+  },
+    {
+    pid: 11,
+    lpSymbol: 'BTCB-BNB LP ShibcakeSwap',
+    lpAddresses: {
+      97: '',
+      56: '0xc52c61c3af83aa026c4de6480183eb07a31c664f',
+    },
+    token: tokens.btcb,
     quoteToken: tokens.wbnb,
   },
   {
