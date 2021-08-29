@@ -186,6 +186,16 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.wbnb,
   },
   {
+    pid: 12,
+    lpSymbol: 'BTCB-BUSD LP ShibcakeSwap',
+    lpAddresses: {
+      97: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
+      56: '0xa7D2B0Ffa655383e3942f77A766548Ca6a1744A1',
+    },
+    token: tokens.btcb,
+    quoteToken: tokens.busd,
+  },
+  {
     pid: 17,
     lpSymbol: 'CAKEPCS-BUSD LP ShibcakeSwap',
     lpAddresses: {
