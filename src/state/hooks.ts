@@ -5,7 +5,8 @@ import { ethers } from 'ethers'
 import { minBy, orderBy } from 'lodash'
 import { useAppDispatch } from 'state'
 import Nfts from 'config/constants/nfts'
-import { State, NodeRound, ReduxNodeLedger, NodeLedger, ReduxNodeRound } from './types'
+import { State, NodeRound, ReduxNodeLedger, NodeLedger, ReduxNodeRound, PriceApiState } from './types'
+import { fetchApiPrices } from './apiPrices'
 import { fetchWalletNfts } from './collectibles'
 import { parseBigNumberObj } from './predictions/helpers'
 
@@ -170,4 +171,29 @@ export const useGetCollectibles = () => {
     tokenIds: data,
     nftsInWallet: Nfts.filter((nft) => identifiers.includes(nft.identifier)),
   }
+}
+
+// API Prices
+export const useFetchApiPriceList = () => {
+  const { slowRefresh } = useRefresh()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchApiPrices())
+  }, [dispatch, slowRefresh])
+}
+
+export const useGetApiPrices = () => {
+  const apiPrices: PriceApiState['data'] = useSelector((state: State) => state.apiPrices.data)
+  return apiPrices
+}
+
+export const useGetApiPrice = (address: string) => {
+  const apiPrices = useGetApiPrices()
+
+  if (!apiPrices) {
+    return null
+  }
+
+  return apiPrices[address.toLowerCase()]
 }
