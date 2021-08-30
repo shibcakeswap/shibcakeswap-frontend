@@ -144,7 +144,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
 
   const getTotalStakedBalance = () => {
     if (isAutoVault) {
-      return getBalanceNumber(totalStaked, stakingToken.decimals)
+      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
     if (isManualCakePool) {
       return getBalanceNumber(totalStaked
