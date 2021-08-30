@@ -172,28 +172,3 @@ export const useGetCollectibles = () => {
     nftsInWallet: Nfts.filter((nft) => identifiers.includes(nft.identifier)),
   }
 }
-
-// API Prices
-export const useFetchApiPriceList = () => {
-  const { slowRefresh } = useRefresh()
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchApiPrices())
-  }, [dispatch, slowRefresh])
-}
-
-export const useGetApiPrices = () => {
-  const apiPrices: PriceApiState['data'] = useSelector((state: State) => state.apiPrices.data)
-  return apiPrices
-}
-
-export const useGetApiPrice = (address: string) => {
-  const apiPrices = useGetApiPrices()
-
-  if (!apiPrices) {
-    return null
-  }
-
-  return apiPrices[address.toLowerCase()]
-}
