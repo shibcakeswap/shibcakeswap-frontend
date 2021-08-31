@@ -29,7 +29,7 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
       return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
     if (isManualCakePool) {
-      return getBalanceNumber(totalStaked, stakingToken.decimals)
+      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
   }, [isAutoVault, totalCakeInVault, isManualCakePool, totalStaked, stakingToken.decimals])
