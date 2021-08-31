@@ -17,6 +17,21 @@ const pools: PoolConfig[] = [
     isFinished: false,
     enableEmergencyWithdraw: true,
   },
+  {
+    sousId: 1,
+    stakingToken: tokens.shibcake,
+    earningToken: tokens.cake,
+    contractAddress: {
+      97: '0x1Dc5685088D038CCe7B826BB7688142c7b5c6DeC',
+      56: '0x1Dc5685088D038CCe7B826BB7688142c7b5c6DeC',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    sortOrder: 999,
+    tokenPerBlock: '0.0005000',
+    isFinished: false,
+    enableEmergencyWithdraw: true,
+  },
 ]
 
 export default pools
