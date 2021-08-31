@@ -20,17 +20,16 @@ const pools: PoolConfig[] = [
   {
     sousId: 1,
     stakingToken: tokens.cake,
-    earningToken: tokens.bnb,
+    earningToken: tokens.cakepcs,
     contractAddress: {
-      97: '0x2Ae4365e968002A62285150211542447C7e42d98',
-      56: '0x2Ae4365e968002A62285150211542447C7e42d98',
+      97: '0x8d40aA37671b29fE79Baed79AAFc3F79e6cB5F7B',
+      56: '0x8d40aA37671b29fE79Baed79AAFc3F79e6cB5F7B',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
     sortOrder: 999,
-    tokenPerBlock: '0.002480',
+    tokenPerBlock: '0.024305',
     isFinished: false,
-    enableEmergencyWithdraw: true,
   },
 ]
 
