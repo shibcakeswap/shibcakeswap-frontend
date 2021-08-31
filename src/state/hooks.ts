@@ -6,7 +6,6 @@ import { minBy, orderBy } from 'lodash'
 import { useAppDispatch } from 'state'
 import Nfts from 'config/constants/nfts'
 import { State, NodeRound, ReduxNodeLedger, NodeLedger, ReduxNodeRound } from './types'
-import { fetchApiPrices } from './apiPrices'
 import { fetchWalletNfts } from './collectibles'
 import { parseBigNumberObj } from './predictions/helpers'
 
