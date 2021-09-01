@@ -84,6 +84,16 @@ const tokens = {
     projectLink: 'https://pancakeswap.finance/',
   },
   
+  cvp: {
+    symbol: 'CVP',
+    address: {
+      56: '0x5Ec3AdBDae549Dce842e24480Eb2434769e22B2E',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'http://powerpool.finance/',
+  },
+  
   babycake: {
     symbol: 'BABYCAKE',
     address: {
