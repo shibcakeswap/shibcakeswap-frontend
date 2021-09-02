@@ -1,56 +1,42 @@
-import BigNumber from 'bignumber.js'
 import { useEffect, useState } from 'react'
-import { getBalanceNumber } from 'utils/formatBalance'
-
-import { fetchPoolsTotalStaking } from '../state/pools/fetchPools'
 
 /*
  * Due to Cors the api was forked and a proxy was created
- * @see https://github.com/lydiaswap/gatsby-lydia-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
+ * @see https://github.com/pancakeswap/gatsby-pancake-api/commit/e811b67a43ccc41edd4a0fa1ee704b2f510aa0ba
  */
-export const baseUrl = 'https://api-sigma-eight.vercel.app/api'
+export const baseUrl = 'https://api.pancakeswap.com/api/v1'
 
 /* eslint-disable camelcase */
 
-export interface ApiSummaryResponse {
+export interface TradePair {
+  swap_pair_contract: string
+  base_symbol: string
+  quote_symbol: string
+  last_price: number
+  base_volume_24_h: number
+  quote_volume_24_h: number
+}
+
+export interface ApiStatResponse {
   update_at: string
-  data: Map<string, Summary>
-}
-
-export interface Summary {
-  liquidity: string
-}
-
-export interface Stats {
-  tvl: number
+  '24h_total_volume': number
+  total_value_locked: number
+  total_value_locked_all: number
+  trade_pairs: {
+    [key: string]: TradePair
+  }
 }
 
 export const useGetStats = () => {
-  const [data, setData] = useState<Stats | null>(null)
+  const [data, setData] = useState<ApiStatResponse | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${baseUrl}/summary`)
-        const responsedata: ApiSummaryResponse = await response.json()
+        const response = await fetch(`${baseUrl}/stat`)
+        const responsedata: ApiStatResponse = await response.json()
 
-        const stats: Stats = { tvl: 0 }
-        // eslint-disable-next-line
-        Object.keys(responsedata.data).forEach(function (key) {
-          stats.tvl += parseInt(responsedata.data[key].liquidity)
-        })
-
-        const pools = await fetchPoolsTotalStaking()
-        const cakePrice = parseInt(
-          responsedata.data['0x818CEE824f8CaEAa05Fb6a1f195935e364D52Af0_0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56']
-            .price,
-        )
-        pools.forEach((pool) => {
-          const total = getBalanceNumber(new BigNumber(pool.totalStaked), 18) / cakePrice
-          stats.tvl += total
-        })
-
-        setData(stats)
+        setData(responsedata)
       } catch (error) {
         console.error('Unable to fetch data:', error)
       }
