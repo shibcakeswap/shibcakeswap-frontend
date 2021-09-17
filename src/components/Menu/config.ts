@@ -40,7 +40,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
    // icon: 'PredictionsIcon',
    // href: '/prediction',
  // },
- // {
+  {
     label: t('Lottery'),
     icon: 'TicketIcon',
    href: '/lottery',
