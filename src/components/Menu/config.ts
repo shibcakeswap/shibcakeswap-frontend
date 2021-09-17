@@ -41,10 +41,10 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
    // href: '/prediction',
  // },
  // {
- //   label: t('Lottery'),
- //   icon: 'TicketIcon',
- //   href: '/lottery',
- // },
+    label: t('Lottery'),
+    icon: 'TicketIcon',
+   href: '/lottery',
+  },
  // {
  //   label: t('Collectibles'),
  //   icon: 'NftIcon',
