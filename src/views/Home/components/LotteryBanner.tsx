@@ -93,7 +93,7 @@ const LotteryBanner: React.FC<{ currentLotteryPrize: string }> = ({ currentLotte
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const prizeTotalText = prizeInBusd.isNaN() ? prizeTotal.toString() : '-'
-  const prizeText = t('15% PancakeSwap CAKE Rewards!')
+  const prizeText = t('5% PancakeSwap CAKE Rewards!')
   const [over, inPrizes] = prizeText.split(prizeTotalText)
 
   return (
